@@ -1,0 +1,21 @@
+version: '3'
+name: carpool
+volumes:
+  data:
+services:
+  db:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: RooT_#PW5532
+      MYSQL_DATABASE: carpool
+      MYSQL_USER: car
+      MYSQL_PASSWORD: pool
+    volumes:
+      - data:/var/lib/mysql
+      - ./files/carpool_dump.sql:/docker-entrypoint-initdb.d/carpool_dump.sql
+    ports:
+      - "3306:3306"
+networks:
+  network1:
+    name: carpool-network
+    external: false

@@ -1,0 +1,48 @@
+##### `.streamlit/config.toml`
+##### Car Pool
+##### Open-Source, hosted on https://github.com/SeriousBenEntertainment/Car_Pool
+##### Please reach out to ben@benbox.org for any questions
+#Theme configuration
+[theme]
+primaryColor = "#F63366"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F0F2F6"
+textColor = "#262730"
+font = "sans serif"
+
+# Browser configuration
+[browser]
+# Server address binding
+#serverAddress = "localhost"
+serverPort = 8501
+gatherUsageStats = false
+
+# Server configuration
+[server]
+headless = true
+#address = "192.168.1.126"
+port = 8501
+baseUrlPath = ""
+
+# Max size, in megabytes, for files uploaded with the file_uploader
+maxUploadSize = 200
+
+# Max size, in megabytes, of messages that can be sent via the WebSocket connection
+maxMessageSize = 200
+
+# Enables support for websocket compression
+enableWebsocketCompression = true
+
+# Server certificate file for connecting via HTTPS. Must be set at the same time as "server.sslKeyFile"
+#sslCertFile = '/Users/ben/Library/Mobile Documents/com~apple~CloudDocs/Python/Streamlit/ssl/host.cert'
+
+# Cryptographic key file for connecting via HTTPS. Must be set at the same time as "server.sslCertFile"
+#sslKeyFile = '/Users/ben/Library/Mobile Documents/com~apple~CloudDocs/Python/Streamlit/ssl/host.key'
+
+# Custom Mapbox token for elements like st.pydeck_chart and st.map
+[mapbox]
+token = "pk.eyJ1IjoiZHJkcmJlbmphbWluIiwiYSI6ImNsZjIxZ2c0bzBlMHMzcnA4ZTNqNXVveGQifQ.MHxDdtgEULvvA3FW-26rsQ"
+
+# Global options for Streamlit
+[global]
+#dataFrameSerialization = "legacy"
