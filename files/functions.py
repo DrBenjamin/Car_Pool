@@ -7,12 +7,11 @@ import streamlit as st
 import streamlit.components.v1 as components
 import platform
 import subprocess
+import webbrowser
 
 
-
-
-#### All functions used exclusively in Car Fleet Management
-### Function: check_password = Password / user checking
+## All functions used exclusively in Car Fleet Management
+# Function: check_password = Password / user checking
 def check_password():
     # Session states
     if ("username" not in st.session_state):
@@ -84,9 +83,7 @@ def check_password():
         st.sidebar.button(label = 'Logout', on_click = logout)
         return True
 
-
-
-### Funtion: logout = Logout button
+# Funtion: logout = Logout button
 def logout():
     # Set `logout` to get logout-message
     st.session_state['logout'] = True
@@ -94,9 +91,7 @@ def logout():
     # Set password to `false`
     st.session_state["password_correct"] = False
 
-
-
-### Function header = Shows header information
+# Function header = Shows header information
 def header(title, data_desc, expanded = True):
     # Keyboard interupt functions
     def read_index_html():
@@ -104,7 +99,11 @@ def header(title, data_desc, expanded = True):
             return f.read()
 
     def f1_callback():
-        subprocess.Popen('HH docs/Html/Car_Pool.chm::Introduction.html', shell = False)
+        try:
+            subprocess.Popen('HH files/Car_Pool.chm::Introduction.html', shell = False)
+        except Exception as e:
+            print('Exception in `f1_callback` function. Error: ', e)
+            webbrowser.open_new_tab('https://www.benbox.org/Car_Pool/Introduction.html')
 
     with st.expander("Header", expanded = expanded):
         # Header information
@@ -118,10 +117,9 @@ def header(title, data_desc, expanded = True):
         txt.write('You can directly access the help through pressing')
         but.button("`F1`", on_click = f1_callback)
         components.html(read_index_html(), height = 0, width = 0,)
-
-
-
-### Function: landing_page = Shows landing page
+        st.markdown('or opening a <a href="https://www.benbox.org/Car_Pool/Introduction.html" target="_blank">seperate tab in your browser</a>, if this is not working.', unsafe_allow_html = True)
+        
+# Function: landing_page = Shows landing page
 def landing_page(page):
     # Title and information
     header = 'Welcome to the' + page
